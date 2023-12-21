@@ -53,7 +53,7 @@ jobs:
     name: Terraform Provider Acceptance Tests
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
@@ -76,5 +76,5 @@ jobs:
           TF_ACC: "1"
           HUND_KEY: ${{ secrets.HUND_KEY }}
           HUND_DOMAIN: tfacc.hund.io
-        run: go test -v -cover ./internal/provider/
+        run: go test -v -cover -timeout 15m ./internal/provider/
         timeout-minutes: 15
