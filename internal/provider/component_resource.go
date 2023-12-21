@@ -560,8 +560,23 @@ func (r *ComponentResource) Update(ctx context.Context, req resource.UpdateReque
 
 	var watchdogForm *hundApiV1.WatchdogFormUpdate
 
-	servicePlan := watchdogPlan.Attributes()["service"].(types.Object)
-	serviceState := watchdogState.Attributes()["service"].(types.Object)
+	servicePlan, ok := watchdogPlan.Attributes()["service"].(types.Object)
+	if !ok {
+		resp.Diagnostics.AddError(
+			"Failed to assert service schema type",
+			"Expected service to be types.Object, got "+servicePlan.String(),
+		)
+		return
+	}
+
+	serviceState, ok := watchdogState.Attributes()["service"].(types.Object)
+	if !ok {
+		resp.Diagnostics.AddError(
+			"Failed to assert service schema type",
+			"Expected service to be types.Object, got "+servicePlan.String(),
+		)
+		return
+	}
 
 	name, err := hundApiV1.ToI18nString(data.Name, data.NameTranslations)
 	if err != nil {

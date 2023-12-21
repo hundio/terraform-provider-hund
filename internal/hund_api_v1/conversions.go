@@ -24,7 +24,10 @@ func (s ServicesWatchdog) Discriminator() string {
 		Discriminator string `json:"type"`
 	}
 
-	json.Unmarshal(s.union, &discriminator)
+	err := json.Unmarshal(s.union, &discriminator)
+	if err != nil {
+		return "unknown"
+	}
 
 	return discriminator.Discriminator
 }
@@ -34,7 +37,10 @@ func (s ServicesMetricProvider) Discriminator() string {
 		Discriminator string `json:"type"`
 	}
 
-	json.Unmarshal(s.union, &discriminator)
+	err := json.Unmarshal(s.union, &discriminator)
+	if err != nil {
+		return "unknown"
+	}
 
 	return discriminator.Discriminator
 }
@@ -44,7 +50,10 @@ func (n Native) Discriminator() string {
 		Discriminator string `json:"method"`
 	}
 
-	json.Unmarshal(n.union, &discriminator)
+	err := json.Unmarshal(n.union, &discriminator)
+	if err != nil {
+		return "unknown"
+	}
 
 	return discriminator.Discriminator
 }
@@ -158,7 +167,10 @@ func ToI18nString(orig basetypes.StringValue, i18n basetypes.MapValue) (I18nStri
 	}
 
 	blank := I18nString{}
-	blank.FromI18nString0("")
+	err0 := blank.FromI18nString0("")
+	if err0 != nil {
+		return blank, err0
+	}
 
 	return blank, err
 }

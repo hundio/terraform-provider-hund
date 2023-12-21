@@ -3,6 +3,7 @@ package models
 import (
 	"context"
 	"errors"
+	"fmt"
 	"math/big"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -77,7 +78,12 @@ func (m IssueTemplateVariableApplicationModel) ApiValue() (*hundApiV1.IssueTempl
 		i18n := map[string]string{}
 
 		for k, v := range m.I18nString.Elements() {
-			i18n[k] = v.(types.String).ValueString()
+			vStr, ok := v.(types.String)
+			if !ok {
+				return nil, fmt.Errorf("I18nString element %[1]s failed type assertion: expected types.String, got %[2]v", k, v)
+			}
+
+			i18n[k] = vStr.ValueString()
 		}
 
 		err := opaque.FromIssueTemplateVariableApplication3(i18n)

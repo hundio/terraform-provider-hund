@@ -101,16 +101,6 @@ func ToIssueModel(ctx context.Context, issue hundApiV1.Issue) (IssueModel, diag.
 
 	for _, component := range issue.Components.Data {
 		model.ComponentIds = append(model.ComponentIds, types.StringValue(component.Id))
-		// _, nameMap, diag0 := hundApiV1.FromI18nString(component.Name)
-		// diag.Append(diag0...)
-
-		// var components []ComponentModel
-		// components = append(components, ComponentModel{
-		// 	Id:   types.StringValue(component.Id),
-		// 	Name: *nameMap,
-		// })
-
-		// model.Components, diag0 = types.ListValue(ComponentModel, components)
 	}
 
 	model.Updates = []UpdateModel{}
@@ -220,7 +210,14 @@ func (u UpdateList) PlanModifyList(ctx context.Context, req planmodifier.ListReq
 
 	attr := req.Config.Schema.GetAttributes()["updates"]
 
-	schema := attr.GetType().(types.ListType)
+	schema, ok := attr.GetType().(types.ListType)
+	if !ok {
+		resp.Diagnostics.AddError(
+			"Failed to assert updates schema type",
+			"Expected a ListType, got "+attr.GetType().String(),
+		)
+		return
+	}
 
 	var diag diag.Diagnostics
 	if endedAt.IsUnknown() || endedAt.IsNull() {

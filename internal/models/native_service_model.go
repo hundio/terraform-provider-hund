@@ -367,9 +367,12 @@ func (s NativeDnsServiceModel) ApiCreateForm() hundApiV1.DNSFormCreate {
 
 	if !s.Nameservers.IsNull() && !s.Nameservers.IsUnknown() {
 		nameservers := []string{}
-
 		for _, v := range s.Nameservers.Elements() {
-			nameservers = append(nameservers, v.(types.String).ValueString())
+			vStr, ok := v.(types.String)
+			if !ok {
+				continue
+			}
+			nameservers = append(nameservers, vStr.ValueString())
 		}
 
 		model.Nameservers = &nameservers
@@ -379,7 +382,11 @@ func (s NativeDnsServiceModel) ApiCreateForm() hundApiV1.DNSFormCreate {
 		assertions := []string{}
 
 		for _, v := range s.ResponsesMustContain.Elements() {
-			assertions = append(assertions, v.(types.String).ValueString())
+			vStr, ok := v.(types.String)
+			if !ok {
+				continue
+			}
+			assertions = append(assertions, vStr.ValueString())
 		}
 
 		model.ResponsesMustContain = &assertions
@@ -408,7 +415,11 @@ func (s NativeDnsServiceModel) ApiUpdateForm() hundApiV1.DNSFormUpdate {
 		nameservers := []string{}
 
 		for _, v := range s.Nameservers.Elements() {
-			nameservers = append(nameservers, v.(types.String).ValueString())
+			vStr, ok := v.(types.String)
+			if !ok {
+				continue
+			}
+			nameservers = append(nameservers, vStr.ValueString())
 		}
 
 		model.Nameservers = &nameservers
@@ -418,7 +429,11 @@ func (s NativeDnsServiceModel) ApiUpdateForm() hundApiV1.DNSFormUpdate {
 		assertions := []string{}
 
 		for _, v := range s.ResponsesMustContain.Elements() {
-			assertions = append(assertions, v.(types.String).ValueString())
+			vStr, ok := v.(types.String)
+			if !ok {
+				continue
+			}
+			assertions = append(assertions, vStr.ValueString())
 		}
 
 		model.ResponsesMustContain = &assertions

@@ -12,7 +12,7 @@ func TestMain(m *testing.M) {
 	resource.TestMain(m)
 }
 
-// sharedClientForDomain returns a common provider client configured for the specified domain
+// sharedClientForDomain returns a common provider client configured for the specified domain.
 func sharedClientForDomain(domain string) (*hundApiV1.Client, error) {
 	domainEnv := os.Getenv("HUND_DOMAIN")
 
