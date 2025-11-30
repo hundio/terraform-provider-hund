@@ -76,5 +76,5 @@ jobs:
           TF_ACC: "1"
           HUND_KEY: ${{ secrets.HUND_KEY }}
           HUND_DOMAIN: tfacc.hund.io
-        run: go test -v -cover -timeout 15m ./internal/provider/
+        run: make sweep && go test -v -cover -timeout 15m ./internal/provider/
         timeout-minutes: 15
