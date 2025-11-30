@@ -64,6 +64,8 @@ func ToGroupModel(group hundApiV1.Group) (GroupModel, diag.Diagnostics) {
 
 		model.Description = *description
 		model.DescriptionTranslations = *descriptionMap
+	} else {
+		model.DescriptionTranslations = types.MapNull(types.StringType)
 	}
 
 	descriptionHtml, descriptionHtmlMap, diag0 := hundApiV1.FromI18nString(group.DescriptionHtml)

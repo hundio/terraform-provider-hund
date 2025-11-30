@@ -68,9 +68,11 @@ func ToIssueTemplateModel(template hundApiV1.IssueTemplate) (IssueTemplateModel,
 
 		model.Title = *title
 		model.TitleTranslations = *titleMap
+	} else {
+		model.TitleTranslations = types.MapNull(types.StringType)
 	}
 
-	if template.Title != nil {
+	if template.Body != nil {
 		body, bodyMap, diag0 := hundApiV1.FromI18nString(*template.Body)
 		diag.Append(diag0...)
 
@@ -80,6 +82,8 @@ func ToIssueTemplateModel(template hundApiV1.IssueTemplate) (IssueTemplateModel,
 		if diag.HasError() {
 			return model, diag
 		}
+	} else {
+		model.BodyTranslations = types.MapNull(types.StringType)
 	}
 
 	model.Variables = ToIssueTemplateVariables(template.Variables)

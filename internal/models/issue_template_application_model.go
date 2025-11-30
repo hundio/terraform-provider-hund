@@ -224,6 +224,8 @@ func ToIssueTemplateApplicationUpdateModel(ctx context.Context, app hundApiV1.Is
 
 		model.Body = *body
 		model.BodyTranslations = *bodyTranslations
+	} else {
+		model.BodyTranslations = types.MapNull(types.StringType)
 	}
 
 	var diags diag.Diagnostics
@@ -260,6 +262,8 @@ func ToIssueTemplateApplicationIssueModel(ctx context.Context, app hundApiV1.Iss
 
 		model.Title = *title
 		model.TitleTranslations = *titleTranslations
+	} else {
+		model.TitleTranslations = types.MapNull(types.StringType)
 	}
 
 	if app.Body != nil {
@@ -270,6 +274,8 @@ func ToIssueTemplateApplicationIssueModel(ctx context.Context, app hundApiV1.Iss
 
 		model.Body = *body
 		model.BodyTranslations = *bodyTranslations
+	} else {
+		model.BodyTranslations = types.MapNull(types.StringType)
 	}
 
 	var diags diag.Diagnostics

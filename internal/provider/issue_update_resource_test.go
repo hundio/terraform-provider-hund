@@ -77,7 +77,7 @@ func TestAccIssueUpdateResource_retrospective(t *testing.T) {
 			{
 				Config: testAccIssueUpdateResourceConfig_retrospective(datum),
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("hund_issue_update.test", "body", ""),
+					resource.TestCheckNoResourceAttr("hund_issue_update.test", "body"),
 				),
 			},
 			// ImportState testing
@@ -91,7 +91,7 @@ func TestAccIssueUpdateResource_retrospective(t *testing.T) {
 			{
 				Config: testAccIssueUpdateResourceConfig_retrospective(datum.AddDate(0, 0, -1)),
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("hund_issue_update.test", "body", ""),
+					resource.TestCheckNoResourceAttr("hund_issue_update.test", "body"),
 				),
 			},
 			// Delete testing automatically occurs in TestCase

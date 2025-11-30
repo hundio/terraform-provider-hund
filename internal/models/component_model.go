@@ -53,6 +53,8 @@ func ToComponentModel(ctx context.Context, comp hundApiV1.ComponentExpansionary)
 
 		model.Description = *description
 		model.DescriptionTranslations = *descriptionMap
+	} else {
+		model.DescriptionTranslations = types.MapNull(types.StringType)
 	}
 
 	descriptionHtml, descriptionHtmlMap, diag0 := hundApiV1.FromI18nString(comp.DescriptionHtml)

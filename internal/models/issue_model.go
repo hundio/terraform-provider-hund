@@ -141,6 +141,8 @@ func ToUpdateModel(ctx context.Context, update hundApiV1.Update) (UpdateModel, d
 
 		model.Body = *body
 		model.BodyTranslations = *bodyMap
+	} else {
+		model.BodyTranslations = types.MapNull(types.StringType)
 	}
 
 	bodyHtml, bodyHtmlMap, diag0 := hundApiV1.FromI18nString(update.BodyHtml)
