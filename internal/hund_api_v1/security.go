@@ -1,7 +1,7 @@
 package hundApiV1
 
 import (
-	"github.com/deepmap/oapi-codegen/v2/pkg/securityprovider"
+	"github.com/oapi-codegen/oapi-codegen/v2/pkg/securityprovider"
 )
 
 func WithSecurity(token string) (ClientOption, error) {

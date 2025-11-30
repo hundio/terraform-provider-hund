@@ -5,7 +5,7 @@ This repository contains the official Terraform provider for Hund, based on our 
 ## Requirements
 
 - [Terraform](https://developer.hashicorp.com/terraform/downloads) >= 1.0
-- [Go](https://golang.org/doc/install) >= 1.20
+- [Go](https://golang.org/doc/install) >= 1.24
 
 ## Building The Provider
 
