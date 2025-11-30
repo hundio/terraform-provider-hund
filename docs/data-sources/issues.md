@@ -162,7 +162,7 @@ Read-Only:
 - `variables` (Attributes Map) (see [below for nested schema](#nestedatt--issues--updates--template--variables))
 
 <a id="nestedatt--issues--updates--template--schema"></a>
-### Nested Schema for `issues.updates.template.variables`
+### Nested Schema for `issues.updates.template.schema`
 
 Read-Only:
 

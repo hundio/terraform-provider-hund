@@ -82,7 +82,7 @@ Read-Only:
 - `webhook` (Attributes) (see [below for nested schema](#nestedatt--components--watchdog--service--webhook))
 
 <a id="nestedatt--components--watchdog--service--dns"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.dns`
 
 Read-Only:
 
@@ -100,7 +100,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--http"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.http`
 
 Read-Only:
 
@@ -122,7 +122,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--icmp"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.icmp`
 
 Read-Only:
 
@@ -138,7 +138,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--manual"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.manual`
 
 Read-Only:
 
@@ -146,7 +146,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--pingdom"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.pingdom`
 
 Read-Only:
 
@@ -157,7 +157,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--tcp"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.tcp`
 
 Read-Only:
 
@@ -177,7 +177,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--udp"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.udp`
 
 Read-Only:
 
@@ -196,7 +196,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--updown"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.updown`
 
 Read-Only:
 
@@ -205,7 +205,7 @@ Read-Only:
 
 
 <a id="nestedatt--components--watchdog--service--uptimerobot"></a>
-### Nested Schema for `components.watchdog.service.webhook`
+### Nested Schema for `components.watchdog.service.uptimerobot`
 
 Read-Only:
 
